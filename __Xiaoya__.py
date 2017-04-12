@@ -163,25 +163,6 @@ class xiaoya(skill):
         if tool.language_check(msg) == 'Chinese':
             if len(msg) <= 10:
                 return self.baike(msg)
-        else:
-            if len(msg) <= 20 and '\n' not in msg:
-                return self.translate(msg)
-            '''
-            else:
-                reply = self.chat(msg)
-                if self.user_id == 'books':
-                    with open('temp_message.txt', 'w') as f:
-                        f.write(reply)
-                    return ''
-                else:
-                    return reply
-            '''
-        '''
-        elif msg[:6] == '/baike':
-            msg = msg.replace('/baike', '').strip('  　\n ')
-            if msg != '':
-                return self.baike(msg)
-        '''
         return self.knowledge()
 
 
