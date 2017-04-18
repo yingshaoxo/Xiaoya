@@ -126,7 +126,13 @@ class skill():
     def knowledge(self):
         k = knowledge(self.user_id)
         text = k.get_random_one()
-        return text.replace('\n', '\n'*2)
+        text = text.replace('\n', '\n'*2)
+
+        text_list = text.split('\n')
+        text_list.reverse()
+        result = '\n'.join(text_list)
+
+        return result
 
     def baike(self, key_word):
         from Plugins.Extensions.GetBaike.Baike import main as baike
