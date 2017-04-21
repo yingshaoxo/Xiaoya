@@ -171,6 +171,23 @@ class xiaoya(skill):
                 return self.baike(msg)
         return self.knowledge()
 
+    def task_num(self):
+        txt_files = [i for i in os.listdir(os.path.join(path, 'Sources')) if '.txt' in i]
+
+        io = in_or_out()
+        all_list_length = 0
+        for txt in txt_files:
+            one_list_length = len(io.split_txt('Sources/' + txt))
+            all_list_length += one_list_length
+
+        all_progress_length = 0
+        progress_list = io.get_setting().get(self.user_id).values()
+        for i in progress_list:
+            all_progress_length += i
+
+        left_num = all_list_length - all_progress_length
+        return left_num
+
 
 #x = xiaoya('xiaoya', 17, 'test')
 #print(x.reply('#codes\nimport os\nprint(os.system("ls"))'))

@@ -18,6 +18,7 @@ def send_books(msg):
 
 @bot.message_handler(content_types=['text'])
 def handle(msg):
+    #print(msg)
     result = TGx.reply(msg.text)
     if result != '':
         bot.reply_to(msg, result)
