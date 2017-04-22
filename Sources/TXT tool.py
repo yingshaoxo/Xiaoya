@@ -36,3 +36,4 @@ _list = tool.split_txt_by_line('人生.bak')
 text = tool.list_to_split_text(_list, 7)
 tool.write_txt('人生7.txt', text)
 print('ok')
+#python book:134

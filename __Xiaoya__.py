@@ -128,11 +128,11 @@ class skill():
         text = k.get_random_one()
         text = text.replace('\n', '\n'*2)
 
-        text_list = text.split('\n')
+        '''text_list = text.split('\n')
         text_list.reverse()
-        result = '\n'.join(text_list)
+        text = '\n'.join(text_list)'''
 
-        return result
+        return text
 
     def baike(self, key_word):
         from Plugins.Extensions.GetBaike.Baike import main as baike
