@@ -12,6 +12,7 @@ def send_welcome(msg):
 
 @bot.message_handler(commands=['go'])
 def send_books(msg):
+    #print(msg) #-1001082405980
     result = QQx.reply(msg.text)
     if result != '':
         bot.reply_to(msg, result)

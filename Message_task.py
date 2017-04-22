@@ -5,13 +5,13 @@ import time
 import telebot
 from __Xiaoya__ import xiaoya
 
-TGx = xiaoya('xiaoya', 17, 'telegram')
+TGx = xiaoya('xiaoya', 17, 'books')
 TOKEN = '121899714:AAF3xShKMc52iV5yN93fiIjOH98ZXP1zcOc'
 tb = telebot.TeleBot(TOKEN)
 
-start_time = datetime.datetime(2017, 4, 21, 7)
-work_time = datetime.timedelta(days=5) # all the day you got
-
+start_time = datetime.datetime(2017, 4, 22, 14)
+work_days = 5 # all the day you got
+work_time = datetime.timedelta(hours=work_days*8) 
 all_interval = work_time.total_seconds()
 end_time = start_time + work_time
 
@@ -24,7 +24,7 @@ def job():
     
     result = TGx.reply('fuck')
     if result != '':
-        tb.send_message(131513300, result)
+        tb.send_message(-1001082405980, result) #-1001082405980
 
     progress = str((1 - (now_interval/all_interval)) * 100)[:7] + '%'
     print(progress)
