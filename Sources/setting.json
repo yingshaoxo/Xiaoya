@@ -1,20 +1,12 @@
 {
     "books": {
-        "GaoKao English.txt": 14,
-        "Maths.txt": 28,
-        "\u6587\u7efc\u77e5\u8bc6.txt": 23,
-        "\u6587\u7efc\u7b54\u9898\u6280\u5de7.txt": 13,
-        "\u6587\u8a00\u6587.txt": 114,
-        "\u8bed\u6587.txt": 130,
-        "\u9b3c\u8c37\u5b50\u4e03\u5341\u4e8c\u8ba1.txt": 4
+        "Maths.txt": 111,
+        "\u6587\u7efc\u7b54\u9898\u6280\u5de7.txt": 97,
+        "\u8bed\u6587.txt": 211
     },
     "telegram": {
-        "GaoKao English.txt": 5,
-        "Maths.txt": 4,
-        "\u6587\u7efc\u77e5\u8bc6.txt": 1,
-        "\u6587\u7efc\u7b54\u9898\u6280\u5de7.txt": 3,
-        "\u6587\u8a00\u6587.txt": 14,
-        "\u8bed\u6587.txt": 11,
-        "\u9b3c\u8c37\u5b50\u4e03\u5341\u4e8c\u8ba1.txt": 0
+        "Maths.txt": 9,
+        "\u6587\u7efc\u7b54\u9898\u6280\u5de7.txt": 8,
+        "\u8bed\u6587.txt": 14
     }
 }

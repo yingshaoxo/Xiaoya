@@ -3,9 +3,13 @@ import schedule
 import time
 
 import telebot
-from __Xiaoya__ import xiaoya
+from __Xiaoya__ import xiaoya, update
 
-TGx = xiaoya('xiaoya', 17, 'books')
+user_id = 'books'
+directory = 'GaoKao'
+TGx = xiaoya('xiaoya', 17, user_id, directory)
+Up = update(user_id, directory)
+
 GROUP = -1001082405980
 #GROUP = -178341019
 TOKEN = '121899714:AAF3xShKMc52iV5yN93fiIjOH98ZXP1zcOc'
@@ -24,7 +28,7 @@ def job_interval_time():
     diff = end_time - datetime.datetime.now()
     now_interval = diff.total_seconds()
 
-    left_num = TGx.task_num()
+    left_num = Up.how_many_left()
     left_day = int(now_interval / (60 * 60 * 24)) - 1
     
     if left_day == 0:
