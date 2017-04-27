@@ -31,9 +31,9 @@ class TXT_tool():
 
 tool = TXT_tool()
 #print(tool.list_to_split_text(['ddddd', 'gggggggg', 'wwwwwww', 'bbbbb', 'cccc'], 2))
-_list = tool.split_txt_by_line('人生.bak')
+_list = tool.read_txt('Top words 5000 with Chinese.txt').split('\n\n')
 #_list = list(set(_list))
-text = tool.list_to_split_text(_list, 7)
-tool.write_txt('人生7.txt', text)
+text = tool.list_to_split_text(_list, 30)
+tool.write_txt('Top words 5000 with Chinese2.txt', text)
 print('ok')
 #python book:134

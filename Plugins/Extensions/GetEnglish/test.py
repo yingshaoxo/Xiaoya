@@ -58,21 +58,41 @@ def youdao_translate1(text):
 
     return result
 
-
-
 def youdao_translate2(text):
     r = requests.get('http://fanyi.youdao.com/openapi.do?keyfrom=yingshaoxo&key=61881981&type=data&doctype=text&version=1.0&q=' \
      + text)
-    translation = r.text.split('result=')[1][:-2]
+    translation = r.text.split('result=')[1][:-1]
     return text + '\n' + translation
 
 
-with open('result.txt', 'r', encoding='utf-8') as f:
-    text = f.read()
+while True:
+    time.sleep(5)
+    with open('Top words 5000.txt', 'r') as f:
+        text = f.read()
+    wlist = text.split('\n')
+    try:
+        w = wlist[0]
+        with open('result.txt', 'r', encoding='utf-8') as t:
+            r = t.read()
+        try:
+            rw = youdao_translate2(w)
+            if rw.strip('  　\n ') == '':
+                exit()
+            print(rw)
+            r += rw + '\n\n'
+            with open('result.txt', 'w', encoding='utf-8') as tt:
+                tt.write(r)
+            del wlist[0]
+        except:
+            del wlist[0]
+        text = '\n'.join(wlist)
+        with open('Top words 5000.txt', 'w') as ff:
+            ff.write(text)
+    except Exception as e:
+        print(e)
+        exit()
 
-for i in sorted(list(set([i for i in text.split('\n\n——————————————\n\n') if i not in ['\n', '', ' ']]))):
-    with open('r2.txt', 'a', encoding='utf-8') as f:
-        f.write(i + '\n\n——————————————\n\n')
+os.system('shutdown /s /f /t 0')
 
-print('OK')
-#print(youdao_translate1('sky'))
+#print('OK')
+print(youdao_translate2('sky'))

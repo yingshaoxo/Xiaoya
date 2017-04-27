@@ -17,7 +17,9 @@ def get_English(word):
         description = '1.' + description.split('1.')[1]
     except:
         description = description
-    return description.replace(u'\xa0', u'').replace(u'\u21d2', u'-->')
+    result = description.replace(u'\xa0', u'').replace(u'\u21d2', u'-->')
+    result = ' '.join(result.split(' ')[6:])
+    return result
 
 def segment_by_num(text):
     for i in range(1,20):
@@ -25,5 +27,5 @@ def segment_by_num(text):
         text = text.replace(num, '\n\n'+num)
     return text
 
-text = 'perfect'
+text = 'wrong'
 print(text + '\n\n' + get_English(text))
