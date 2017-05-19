@@ -7,7 +7,7 @@ from __Xiaoya__ import xiaoya
 import multiprocessing
 from multiprocessing import Manager
 
-share_dict = Manager.dict()
+share_dict = Manager().dict()
 share_dict.update({"state": True})
 
 user_id = 'telegram'
@@ -53,7 +53,7 @@ def job():
         tb.send_message(GROUP, result)
     return ''
 
-def do(share_dict):
+def do(share_dict, useless):
     while True:
         left_num, interval_t = job_interval_time()
         #tb.send_message(-1001120909649, 'You still got {} pieces to read.'.format(left_num))
@@ -62,7 +62,7 @@ def do(share_dict):
             job()
         time.sleep(interval_t)
 
-task = multiprocessing.Process(target=do, args=(share_dict))
+task = multiprocessing.Process(target=do, args=(share_dict, ""))
 
 x = xiaoya('xiaoya', 17, 'telegram', '__all__')
 bot = telebot.TeleBot("121899714:AAF3xShKMc52iV5yN93fiIjOH98ZXP1zcOc")
