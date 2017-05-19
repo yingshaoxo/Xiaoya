@@ -8,7 +8,7 @@ import multiprocessing
 from multiprocessing import Manager
 
 share_dict = Manager().dict()
-share_dict.update({"state": True})
+share_dict.update({"state": False})
 
 user_id = 'telegram'
 directory = 'GaoKao'
