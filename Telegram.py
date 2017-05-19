@@ -5,7 +5,10 @@ import telebot
 from __Xiaoya__ import xiaoya
 
 import multiprocessing
+from multiprocessing import Manager
 
+share_dict = Manager.dict()
+share_dict.update({"state": True})
 
 user_id = 'telegram'
 directory = 'GaoKao'
@@ -50,15 +53,16 @@ def job():
         tb.send_message(GROUP, result)
     return ''
 
-def do():
+def do(share_dict):
     while True:
         left_num, interval_t = job_interval_time()
         #tb.send_message(-1001120909649, 'You still got {} pieces to read.'.format(left_num))
         #tb.send_message(-1001120909649, 'Every {} seconds one piece.'.format(str(int(interval_t))))
-        job()
+        if share_dict["state"]:
+            job()
         time.sleep(interval_t)
 
-task = multiprocessing.Process(target=do)
+task = multiprocessing.Process(target=do, args=(share_dict))
 
 x = xiaoya('xiaoya', 17, 'telegram', '__all__')
 bot = telebot.TeleBot("121899714:AAF3xShKMc52iV5yN93fiIjOH98ZXP1zcOc")
@@ -71,14 +75,12 @@ def handle(msg):
 @bot.message_handler(commands=['start_task'])
 def handle(msg):
     if msg.chat.type == 'supergroup':
-        if task.is_alive() == False:
-            task.start()
+        share_dict["state"] = True
 
 @bot.message_handler(commands=['stop_task'])
 def handle(msg):
     if msg.chat.type == 'supergroup':
-        if task.is_alive() == True:
-            task.terminate()
+        share_dict["state"] = False
         
 @bot.message_handler(content_types=['text'])
 def handle(msg):
