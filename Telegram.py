@@ -19,8 +19,8 @@ GROUP = -1001082405980
 TOKEN = '121899714:AAF3xShKMc52iV5yN93fiIjOH98ZXP1zcOc'
 tb = telebot.AsyncTeleBot(TOKEN)
 
-start_time = datetime.datetime(2017, 5, 20, 17)
-work_days = 5 # all the day you got
+start_time = datetime.datetime(2017, 5, 26, 17)
+work_days = 10 # all the day you got
 
 work_time = datetime.timedelta(hours=work_days*24) 
 end_time = start_time + work_time #deadline

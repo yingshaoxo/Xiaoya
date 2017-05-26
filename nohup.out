@@ -1,0 +1,20 @@
+2017-05-25 14:17:15,824 (__init__.py:250 MainThread) ERROR - TeleBot: "A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is too long"}']"
+Process Process-2:
+Traceback (most recent call last):
+  File "/usr/lib/python3.5/multiprocessing/process.py", line 249, in _bootstrap
+    self.run()
+  File "/usr/lib/python3.5/multiprocessing/process.py", line 93, in run
+    self._target(*self._args, **self._kwargs)
+  File "Telegram.py", line 61, in do
+    if share_dict["state"]:
+  File "<string>", line 2, in __getitem__
+  File "/usr/lib/python3.5/multiprocessing/managers.py", line 716, in _callmethod
+    conn.send((self._id, methodname, args, kwds))
+  File "/usr/lib/python3.5/multiprocessing/connection.py", line 206, in send
+    self._send_bytes(ForkingPickler.dumps(obj))
+  File "/usr/lib/python3.5/multiprocessing/connection.py", line 404, in _send_bytes
+    self._send(header + buf)
+  File "/usr/lib/python3.5/multiprocessing/connection.py", line 368, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
