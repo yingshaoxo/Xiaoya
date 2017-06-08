@@ -70,7 +70,9 @@ bot = telebot.TeleBot("121899714:AAF3xShKMc52iV5yN93fiIjOH98ZXP1zcOc")
 @bot.message_handler(commands=['chat_id'])
 def handle(msg):
     if msg.chat.type == 'supergroup':
-        bot.reply_to(msg, 'Chat_id of this group:\n\n{}'.format(str(msg.chat.id)))
+        reply = 'Chat_id of this group:\n\n{}'.format(str(msg.chat.id))
+        reply += '\n\n' + '-'*20 + '\n\n' + 'Who sent this message:\n\n{}'.format(str(msg.from_user.id))
+        bot.reply_to(msg, reply)
 
 @bot.message_handler(commands=['start_task'])
 def handle(msg):
@@ -84,6 +86,7 @@ def handle(msg):
         
 @bot.message_handler(content_types=['text'])
 def handle(msg):
+    return
     result = x.reply(msg.text)
     if result != '':
         bot.reply_to(msg, result)
