@@ -8,7 +8,6 @@ book2 = book.replace('.txt', virsion+'.txt')
 with open(book2, 'r', encoding='utf-8') as f:
     text = f.read()
 
-#您上月在此我们
 line = '\n\n' + '——————————————' + '\n\n'
 #do something in here
 ##def handle(obj):

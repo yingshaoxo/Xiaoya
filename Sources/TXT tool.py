@@ -36,4 +36,4 @@ _list = tool.read_txt('Top words 5000 with Chinese.txt').split('\n\n')
 text = tool.list_to_split_text(_list, 30)
 tool.write_txt('Top words 5000 with Chinese2.txt', text)
 print('ok')
-#python book:134
+

@@ -4,10 +4,9 @@ from difflib import SequenceMatcher
 from difflib import get_close_matches
 
 
-global path
-path = os.path.dirname(__file__) + '\\Date\\' 
-if os.path.exists(path) == False:
-    os.mkdir(path)
+PATH = os.path.join(os.path.dirname(__file__),'Sources') 
+if os.path.exists(PATH) == False:
+    os.mkdir(PATH)
 
 def similar(a, b): 
     return SequenceMatcher(None, a, b).ratio()
@@ -76,8 +75,17 @@ def list_to_split_text(_list, num_of_line):
               text += i.replace('\n', '\n\n') + '\n\n——————————————\n\n'
     return text[:-16]
 
+def get_txt_list(dir):
+    all_files = []
+    for root, dirs, files in os.walk(dir):
+        for name in files:
+            all_files.append(os.path.join(root, name))
+    txt_files = [name for name in all_files if '.txt' == name[-4:]]
+    return txt_files
+
 def search(word):
-    txt_files = [path + i for i in os.listdir(path) if '.txt' in i]
+    txt_files = get_txt_list(PATH)
+    print(txt_files)
     result_list = []
     for i in txt_files:
         a_list = split_txt(i)
@@ -119,7 +127,7 @@ def seg_close(text, a_list):
         return a_list[max[0]]    
 
 def search2(text):
-    txt_files = [path + i for i in os.listdir(path) if '.txt' in i]
+    txt_files = get_txt_list(PATH)
     result_list = []
     for i in txt_files:
         a_list = split_txt(i)
@@ -127,8 +135,8 @@ def search2(text):
         
     return list_to_split_text(result_list, 1)
 
-'''
+"""
 while True:
     word = input('What you want to search?   ')
     print(search(word))
-'''
+"""
