@@ -29,7 +29,7 @@ def send_a_piece_of_knowledge(msg):
 
 @bot.message_handler(content_types=['text'])
 def handle(msg):
-    r = x.translate(msg)
+    r = x.translate(msg.text)
     if r != '':
         bot.reply_to(msg, r)
 
