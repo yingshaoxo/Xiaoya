@@ -3,6 +3,7 @@ import requests
 import random
 import json
 import re
+from googletrans import Translator
 
 
 def OrganizeText(text):
@@ -79,19 +80,13 @@ def baidu_translate(text):
         return ''
 
 def google_translate(text):
-    requests.packages.urllib3.disable_warnings()
-    r = requests.get('http://translate.google.cn/translate_a/t?client=j&text=' + text + '&hl=zh-CN&multires=1&otf=1&pc=0&sc=1&sl=en&tl=zh-CN', verify=False)
-    translation = r.text[1:-1]
-    if translation.find('!DOCTYPE') == -1:
-        translation = handle_result(translation)
-        return text + '\n' + translation
-    else:
-        return baidu_translate(text)
+    try:
+        translator = Translator()
+        return translator.translate(text, dest='en').text
+    except Exception as e:
+        print(e)
+        return ''
 
-'''
-def main(msg):
-    result = google_translate(msg)
-    return result'''
 def main(msg):
     text = msg
     text = OrganizeText(text)
@@ -110,6 +105,7 @@ def main(msg):
         else:
             result += ''
     return OrganizeText(result)
+
 """
 text = '''
 Good News Beats Bad on Social Networks.

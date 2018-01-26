@@ -181,7 +181,7 @@ class skill():
     def run_python(self, codes):
         from __RunPY__ import run_py_codes
         return run_py_codes(codes)  
-"""
+
     def baike(self, key_word):
         from Plugins.Extensions.GetBaike.Baike import main as baike
         from Plugins.Extensions.GetChinese.SplitSentence import main as split_Ch
@@ -190,7 +190,6 @@ class skill():
     def translate(self, text):
         from Plugins.Extensions.GetEnglish.SplitSentenceAndTranslate import main as translate
         return translate(text)
-"""   
 
 
 class xiaoya(skill):

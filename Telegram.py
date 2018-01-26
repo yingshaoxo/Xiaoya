@@ -29,6 +29,8 @@ def send_a_piece_of_knowledge(msg):
 
 @bot.message_handler(content_types=['text'])
 def handle(msg):
-    pass
+    r = x.translate(msg)
+    if r != '':
+        bot.reply_to(msg, r)
 
 bot.polling()
