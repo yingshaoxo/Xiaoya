@@ -30,7 +30,7 @@ def send_a_piece_of_knowledge(msg):
 
 @bot.message_handler(content_types=['text'])
 def handle(msg):
-    p = r'[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM]'   
+    p = r'.*[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM].*'   
     if re.match(p, msg.text) != None:
         return
     r = x.translate(msg.text)
