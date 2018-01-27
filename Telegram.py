@@ -1,3 +1,4 @@
+import re
 import telebot
 from __Xiaoya__ import xiaoya
 
@@ -29,6 +30,9 @@ def send_a_piece_of_knowledge(msg):
 
 @bot.message_handler(content_types=['text'])
 def handle(msg):
+    p = r'[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM]'   
+    if re.match(p, msg.text) != None:
+        return
     r = x.translate(msg.text)
     if r != '':
         bot.reply_to(msg, r)
