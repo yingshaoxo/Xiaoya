@@ -29,8 +29,13 @@ def send_a_piece_of_knowledge(msg):
 
 @bot.message_handler(content_types=['text'])
 def handle(msg):
-    if not x.is_English(msg.text): 
-        bot.kickChatMember(msg.chat.id, msg.from_user.id)
-        bot.unbanChatMember(msg.chat.id, msg.from_user.id)
+    if not x.is_English(msg.text) and msg.chat.id in [-1001393991906]:
+        bot.reply_to(msg, 'Please speak English!')
+        try:
+            bot.kick_chat_member(msg.chat.id, msg.from_user.id)
+            bot.unban_chat_member(msg.chat.id, msg.from_user.id)
+        except Exception as e:
+            print(e)
+
 
 bot.polling()
