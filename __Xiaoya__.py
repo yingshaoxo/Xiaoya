@@ -191,6 +191,14 @@ class skill():
         from Plugins.Extensions.GetEnglish.SplitSentenceAndTranslate import main as translate
         return translate(text)
 
+    def is_English(self, text):
+        def language_check(self, text):
+            if re.match(r'[\u4e00-\u9fa5]', text) is None:
+                return 'English'
+            else:
+                return 'Chinese'
+        return language_check(text) == 'English'
+
 
 class xiaoya(skill):
     '''A real xiaoya class'''
