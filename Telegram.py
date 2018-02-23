@@ -1,4 +1,3 @@
-import re
 import telebot
 from __Xiaoya__ import xiaoya
 
@@ -30,11 +29,8 @@ def send_a_piece_of_knowledge(msg):
 
 @bot.message_handler(content_types=['text'])
 def handle(msg):
-    p = r'.*[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM].*'   
-    if re.match(p, msg.text) != None:
-        return
-    r = x.translate(msg.text)
-    if r != '':
-        bot.reply_to(msg, r)
+    if not x.is_English(msg.text): 
+        bot.kickChatMember(msg.chat.id, msg.from_user.id)
+        bot.unbanChatMember(msg.chat.id, msg.from_user.id)
 
 bot.polling()
