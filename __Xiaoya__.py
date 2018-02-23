@@ -192,7 +192,7 @@ class skill():
         return translate(text)
 
     def is_English(self, text):
-        def language_check(self, text):
+        def language_check(text):
             if re.match(r'[\u4e00-\u9fa5]', text) is None:
                 return 'English'
             else:
