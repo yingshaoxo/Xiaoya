@@ -29,13 +29,14 @@ def send_a_piece_of_knowledge(msg):
 
 @bot.message_handler(content_types=['text'])
 def handle(msg):
-    if not x.is_English(msg.text) and msg.chat.id in [-1001393991906]:
-        bot.reply_to(msg, 'Please speak English!')
-        try:
+    if not x.is_English(msg.text) and msg.chat.title in ['Python for English']:
+        admin_list = bot.get_chat_administrators(msg.chat.id)
+        admin_ids = [member.user.id for member in admin_list]
+        
+        if msg.from_user.id in admin_ids:
+            bot.reply_to(msg, 'Please speak English!')
+        else:
             bot.kick_chat_member(msg.chat.id, msg.from_user.id)
             bot.unban_chat_member(msg.chat.id, msg.from_user.id)
-        except Exception as e:
-            print(e)
-
 
 bot.polling()
