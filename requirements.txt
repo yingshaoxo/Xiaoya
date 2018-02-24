@@ -1,3 +1,4 @@
 flask
 pyTelegramBotAPI
 googletrans
+auto_everything

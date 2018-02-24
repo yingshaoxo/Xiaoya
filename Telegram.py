@@ -1,3 +1,8 @@
+from auto_everything import import Base
+b = Base()
+if b.is_running('Telegram.py'):
+    exit()
+
 import telebot
 from __Xiaoya__ import xiaoya
 
