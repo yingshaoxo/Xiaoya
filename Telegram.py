@@ -1,21 +1,10 @@
-from auto_everything import import Base
-b = Base()
-if b.is_running('Telegram.py'):
-    exit()
-
 import telebot
 from __Xiaoya__ import xiaoya
 
-user_id = 'telegram'
-directory = 'programming'
-TGx = xiaoya('xiaoya', 17, user_id, directory)
-
-GROUP = -1001027434973
 TOKEN = '121899714:AAF3xShKMc52iV5yN93fiIjOH98ZXP1zcOc'
 
-
 x = xiaoya('xiaoya', 17, 'telegram', '__all__')
-bot = telebot.TeleBot("121899714:AAF3xShKMc52iV5yN93fiIjOH98ZXP1zcOc")
+bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['chat_id'])
 def get_chat_id(msg):
@@ -26,8 +15,6 @@ def get_chat_id(msg):
         
 @bot.message_handler(commands=['go'])
 def send_a_piece_of_knowledge(msg):
-    if msg.chat.id != GROUP:
-        return
     result = x.reply(msg.text)
     if result != '':
         bot.reply_to(msg, result)
